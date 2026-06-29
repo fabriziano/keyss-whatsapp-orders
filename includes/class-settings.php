@@ -1,56 +1,24 @@
 <?php
 
-if (!defined('ABSPATH')) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
-class Keyss_WhatsApp_Plugin
-{
-    private static $instance = null;
+class Keyss_WhatsApp_Settings {
 
-    public static function get_instance()
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
+	public function __construct() {
 
-        return self::$instance;
-    }
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
+        
 
-    private function __construct()
-    {
-        require_once KWO_PLUGIN_PATH . 'includes/class-settings.php';
+	}
 
-        new Keyss_WhatsApp_Settings();
+	public function register_settings() {
 
-        add_action('admin_menu', [$this, 'admin_menu']);
-    }
+		register_setting(
+			'kwo_settings_group',
+			'kwo_settings'
+		);
 
-    public function admin_menu()
-    {
-        add_menu_page(
-            'WhatsApp Orders',
-            'WhatsApp Orders',
-            'manage_options',
-            'keyss-whatsapp-orders',
-            [$this, 'settings_page'],
-            'dashicons-whatsapp',
-            56
-        );
-    }
-
-    public function settings_page()
-    {
-        ?>
-        <div class="wrap">
-            <h1>Keyss WhatsApp Orders</h1>
-
-            <p>Bienvenido al panel de configuración.</p>
-
-            <hr>
-
-            <p>En la siguiente etapa agregaremos la configuración del número de WhatsApp.</p>
-        </div>
-        <?php
-    }
+	}
 }

@@ -1,0 +1,45 @@
+#kwo-variables {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.kwo-variable-card {
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    background: #fff;
+    padding: 15px;
+}
+
+.kwo-variable-card h4 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.kwo-variable-card p {
+    margin: 0 0 12px;
+    color: #646970;
+    min-height: 40px;
+}
+
+.kwo-variable-card button {
+    width: 100%;
+}
+
+#kwo-preview{
+    margin-top:25px;
+    padding:20px;
+    background:#fff;
+    border:1px solid #ccd0d4;
+    border-left:4px solid #25D366;
+    border-radius:6px;
+}
+
+#kwo-preview p{
+    margin:8px 0;
+}
+
+#kwo-preview strong{
+    color:#2271b1;
+}
