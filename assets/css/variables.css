@@ -1,0 +1,36 @@
+:root {
+
+    /* Colores */
+
+    --kwo-primary: #25D366;
+    --kwo-primary-hover: #1ebe5d;
+
+    --kwo-secondary: #2271b1;
+
+    --kwo-bg: #f6f7f7;
+
+    --kwo-card: #ffffff;
+
+    --kwo-border: #dcdcde;
+
+    --kwo-text: #1d2327;
+
+    --kwo-muted: #646970;
+
+    /* Espaciados */
+
+    --kwo-space-xs: 8px;
+    --kwo-space-sm: 12px;
+    --kwo-space-md: 20px;
+    --kwo-space-lg: 30px;
+
+    /* Bordes */
+
+    --kwo-radius: 10px;
+
+    /* Sombras */
+
+    --kwo-shadow:
+        0 2px 8px rgba(0,0,0,.05);
+
+}

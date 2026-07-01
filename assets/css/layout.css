@@ -1,0 +1,51 @@
+/* ==========================
+   Layout principal
+========================== */
+
+.kwo-layout {
+
+    display: grid;
+
+    grid-template-columns: 1fr 420px;
+
+    gap: var(--kwo-space-lg);
+
+    align-items: start;
+
+}
+
+/* Columna izquierda */
+
+.kwo-main {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--kwo-space-md);
+
+}
+
+/* Columna derecha */
+
+.kwo-sidebar {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--kwo-space-md);
+
+}
+
+/* Responsive */
+
+@media (max-width:1100px){
+
+    .kwo-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

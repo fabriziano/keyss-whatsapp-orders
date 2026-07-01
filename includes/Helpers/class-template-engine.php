@@ -8,11 +8,11 @@ class KWO_Template_Engine {
 
 	public static function replace( $template, $variables ) {
 
-		foreach ( $variables as $key => $value ) {
+		foreach ( $variables as $token => $value ) {
 
 			$template = str_replace(
-				'{' . $key . '}',
-				$value,
+				$token,
+				(string) $value,
 				$template
 			);
 

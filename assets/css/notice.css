@@ -1,0 +1,25 @@
+.kwo-notice{
+
+    margin-top:15px;
+
+    background:#25D366;
+
+    color:#fff;
+
+    padding:10px 15px;
+
+    border-radius:8px;
+
+    display:inline-block;
+
+    animation:kwoFadeIn .2s ease;
+
+}
+
+.kwo-notice-container{
+
+    margin-top:15px;
+
+    min-height:40px;
+
+}

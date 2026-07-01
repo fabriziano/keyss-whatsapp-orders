@@ -1,3 +1,10 @@
+@import url("variables.css");
+@import url("layout.css");
+@import url("cards.css");
+@import url("preview.css");
+@import url("chips.css");
+@import url("notice.css");
+
 #kwo-variables {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -42,4 +49,192 @@
 
 #kwo-preview strong{
     color:#2271b1;
+}
+
+.kwo-group-title{
+
+    margin-top:30px;
+
+    margin-bottom:15px;
+
+    padding-bottom:8px;
+
+    border-bottom:2px solid #e5e5e5;
+
+    font-size:18px;
+
+}
+
+.kwo-variable-group{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:16px;
+
+    margin-bottom:25px;
+
+}
+
+.kwo-whatsapp-preview{
+
+    background:#DCF8C6;
+
+    border-radius:12px;
+
+    padding:20px;
+
+    min-height:180px;
+
+    white-space:pre-wrap;
+
+    font-family:Arial,sans-serif;
+
+    line-height:1.6;
+
+    border:1px solid #d4d4d4;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+/* ---------- Simulación WhatsApp ---------- */
+
+.kwo-phone{
+
+    width:380px;
+
+    margin:auto;
+
+    background:#e5ddd5;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    border:1px solid #ccc;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+}
+
+.kwo-phone-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#075E54;
+
+    color:#fff;
+
+    padding:15px;
+
+}
+
+.kwo-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    background:#25D366;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+
+    color:#fff;
+
+}
+
+.kwo-chat{
+
+    padding:20px;
+
+    min-height:260px;
+
+}
+
+.kwo-bubble{
+
+    background:#DCF8C6;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    display:inline-block;
+
+    max-width:90%;
+
+    white-space:pre-wrap;
+
+    position:relative;
+
+    line-height:1.6;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.kwo-time{
+
+    display:block;
+
+    text-align:right;
+
+    font-size:11px;
+
+    color:#666;
+
+    margin-top:10px;
+
+}
+
+.kwo-token{
+
+    display:block;
+
+    margin:15px 0;
+
+    padding:10px;
+
+    background:#f6f7f7;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+}
+
+.kwo-actions{
+
+    display:flex;
+
+    gap:10px;
+
+    margin-top:15px;
+
+}
+
+.kwo-copy{
+
+    flex:1;
+
+}
+
+.kwo-variable{
+
+    flex:1;
+
 }

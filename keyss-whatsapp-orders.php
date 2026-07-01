@@ -19,15 +19,26 @@ define( 'KWO_VERSION', '1.0.1-dev' );
 define( 'KWO_PLUGIN_FILE', __FILE__ );
 define( 'KWO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
-error_log('KWO_PLUGIN_PATH: ' . KWO_PLUGIN_PATH);
 define( 'KWO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'KWO_BASENAME', plugin_basename( __FILE__ ) );
 
 // Cargar archivos del plugin
-require_once KWO_PLUGIN_PATH . 'includes/class-plugin.php';
+require_once KWO_PLUGIN_PATH . 'includes/Core/class-loader.php';
+require_once KWO_PLUGIN_PATH . 'includes/Core/class-plugin.php';
 
 // Iniciar el plugin
 function keyss_whatsapp_orders() {
     return Keyss_WhatsApp_Plugin::get_instance();
 }
+
+register_activation_hook(
+    __FILE__,
+    array( 'Keyss_WhatsApp_Plugin', 'activate' )
+);
+
+register_deactivation_hook(
+    __FILE__,
+    array( 'Keyss_WhatsApp_Plugin', 'deactivate' )
+);
 
 keyss_whatsapp_orders();

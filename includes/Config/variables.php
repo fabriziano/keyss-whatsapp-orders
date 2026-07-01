@@ -7,6 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 return array(
 
     'cliente' => array(
+        'group'       => 'Cliente',
         'label'       => 'Cliente',
         'icon'        => '👤',
         'token'       => '{cliente}',
@@ -15,6 +16,7 @@ return array(
     ),
 
     'pedido' => array(
+        'group'       => 'Pedido',
         'label'       => 'Pedido',
         'icon'        => '📦',
         'token'       => '{pedido}',
@@ -23,6 +25,7 @@ return array(
     ),
 
     'productos' => array(
+        'group'       => 'Productos',
         'label'       => 'Productos',
         'icon'        => '🛒',
         'token'       => '{productos}',
@@ -31,6 +34,7 @@ return array(
     ),
 
     'total' => array(
+        'group'       => 'Total',
         'label'       => 'Total',
         'icon'        => '💰',
         'token'       => '{total}',
@@ -39,6 +43,7 @@ return array(
     ),
 
     'mensaje_cliente' => array(
+        'group'       => 'Comentarios',
         'label'       => 'Comentario',
         'icon'        => '📝',
         'token'       => '{mensaje_cliente}',

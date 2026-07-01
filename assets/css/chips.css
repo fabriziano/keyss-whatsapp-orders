@@ -1,0 +1,121 @@
+/* ==========================
+   Variables
+========================== */
+
+.kwo-group-title{
+
+	margin:25px 0 10px;
+
+	font-size:15px;
+
+	font-weight:600;
+
+	color:var(--kwo-muted);
+
+	text-transform:uppercase;
+
+	letter-spacing:.5px;
+
+}
+
+.kwo-chip-container{
+
+	display:flex;
+
+	flex-wrap:wrap;
+
+	gap:10px;
+
+	margin-bottom:20px;
+
+}
+
+.kwo-chip{
+
+	display:inline-flex;
+
+	align-items:center;
+
+	gap:8px;
+
+	padding:10px 18px;
+
+	border:none;
+
+	border-radius:999px;
+
+	background:#fff;
+
+	border:1px solid var(--kwo-border);
+
+	cursor:pointer;
+
+	font-size:14px;
+
+	font-weight:600;
+
+	transition:all .25s ease;
+
+}
+
+.kwo-chip:hover{
+
+	background:var(--kwo-primary);
+
+	border-color:var(--kwo-primary);
+
+	color:#fff;
+
+	transform:translateY(-2px);
+
+	box-shadow:0 6px 18px rgba(37,211,102,.25);
+
+}
+
+.kwo-chip-icon{
+
+	font-size:16px;
+
+}
+
+.kwo-chip-label{
+
+	white-space:nowrap;
+
+}
+
+/* ==========================
+   Animación del chip
+========================== */
+
+.kwo-chip.is-active{
+
+    transform:scale(.95);
+
+    background:var(--kwo-primary);
+
+    color:#fff;
+
+    border-color:var(--kwo-primary);
+
+}
+
+@keyframes kwoFadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-5px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}

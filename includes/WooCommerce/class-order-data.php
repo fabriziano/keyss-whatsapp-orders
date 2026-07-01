@@ -17,58 +17,143 @@ class KWO_Order_Data {
 			return array();
 		}
 
-		$productos = array();
+		return array_merge(
 
-		foreach ( $order->get_items() as $item ) {
+			self::get_customer_variables( $order ),
 
-			$producto = sprintf(
-				"• %s x%d - %s",
-				$item->get_name(),
-				$item->get_quantity(),
-				wc_price( $item->get_total() )
-			);
+			self::get_order_variables( $order ),
 
-			$productos[] = wp_strip_all_tags( $producto );
+			self::get_shipping_variables( $order ),
 
-		}
+			self::get_total_variables( $order )
+
+		);
+
+	}
+
+	/**
+	 * Variables del cliente.
+	 */
+	private static function get_customer_variables( $order ) {
 
 		return array(
 
-			'cliente' => trim(
+			'{cliente}'  => trim(
 				$order->get_billing_first_name() . ' ' .
 				$order->get_billing_last_name()
 			),
 
-			'pedido' => $order->get_id(),
+			'{telefono}' => $order->get_billing_phone(),
 
-			'telefono' => $order->get_billing_phone(),
-
-			'correo' => $order->get_billing_email(),
-
-			'direccion' => $order->get_billing_address_1(),
-
-			'ciudad' => $order->get_billing_city(),
-
-			'pais' => $order->get_billing_country(),
-
-			'metodo_pago' => $order->get_payment_method_title(),
-
-			'metodo_envio' => implode(
-				', ',
-				$order->get_shipping_method()
-					? array( $order->get_shipping_method() )
-					: array()
-			),
-
-			'productos' => implode( PHP_EOL, $productos ),
-
-			'subtotal' => wc_price( $order->get_subtotal() ),
-
-			'total' => wc_price( $order->get_total() ),
-
-			'mensaje_cliente' => $order->get_customer_note(),
+			'{correo}'   => $order->get_billing_email(),
 
 		);
+
+	}
+
+	/**
+	 * Variables del pedido.
+	 */
+	private static function get_order_variables( $order ) {
+
+		return array(
+
+			'{pedido}'            => $order->get_id(),
+
+			'{productos}'         => self::get_products( $order ),
+
+			'{mensaje_cliente}'   => $order->get_customer_note(),
+
+		);
+
+	}
+
+	/**
+	 * Variables de envío.
+	 */
+	private static function get_shipping_variables( $order ) {
+
+		return array(
+
+			'{direccion}' => $order->get_billing_address_1(),
+
+			'{ciudad}'    => $order->get_billing_city(),
+
+			'{pais}'      => $order->get_billing_country(),
+
+			'{metodo_envio}' => $order->get_shipping_method(),
+
+		);
+
+	}
+
+	/**
+	 * Variables monetarias.
+	 */
+	private static function get_total_variables( $order ) {
+
+		return array(
+
+			'{subtotal}' => wc_price( $order->get_subtotal() ),
+
+			'{total}' => wc_price( $order->get_total() ),
+
+			'{metodo_pago}' => $order->get_payment_method_title(),
+
+		);
+
+	}
+
+	/**
+	 * Construye la lista de productos.
+	 */
+	private static function get_products( $order ) {
+
+		$productos = array();
+
+		foreach ( $order->get_items() as $item ) {
+
+			$productos[] = sprintf(
+
+				"• %s x%d - %s",
+
+				$item->get_name(),
+
+				$item->get_quantity(),
+
+				wp_strip_all_tags(
+					wc_price( $item->get_total() )
+				)
+
+			);
+
+		}
+
+		return implode( PHP_EOL, $productos );
+
+	}
+
+	public static function get_recent_orders( $limit = 10 ) {
+
+		return wc_get_orders(
+			array(
+				'limit'   => $limit,
+				'orderby' => 'date',
+				'order'   => 'DESC',
+			)
+		);
+
+	}
+
+	/**
+	 * Obtiene un pedido por su ID.
+	 *
+	 * @param int $order_id
+	 * @return WC_Order|false
+	 */
+	public static function get_order( $order_id ) {
+
+		return wc_get_order( $order_id );
 
 	}
 

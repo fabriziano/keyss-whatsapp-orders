@@ -1,0 +1,35 @@
+/* ==========================
+   Tarjetas
+========================== */
+
+.kwo-card{
+
+    background: var(--kwo-card);
+
+    border:1px solid var(--kwo-border);
+
+    border-radius:var(--kwo-radius);
+
+    padding:28px;
+
+    box-shadow:var(--kwo-shadow);
+
+}
+
+.kwo-card h2{
+
+    margin:0 0 8px;
+
+    font-size:20px;
+
+    font-weight:600;
+
+}
+
+.kwo-card-description{
+
+    color:var(--kwo-muted);
+
+    margin-bottom:20px;
+
+}

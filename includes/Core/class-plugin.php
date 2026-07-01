@@ -1,5 +1,5 @@
 <?php
-
+ 
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -18,28 +18,37 @@ class Keyss_WhatsApp_Plugin {
         return self::$instance;
     }
 
-    private function __construct() {
+    private function __construct()
+    {
+        $this->load_dependencies();
 
-        // Configuración
-        require_once KWO_PLUGIN_PATH . 'includes/class-settings.php';
-        require_once KWO_PLUGIN_PATH . 'includes/class-admin.php';
+        $this->init_hooks();
 
-        // Helpers
-        require_once KWO_PLUGIN_PATH . 'includes/Helpers/class-template-engine.php';
+        $this->init();
+    }
 
-        // WooCommerce
-        require_once KWO_PLUGIN_PATH . 'includes/WooCommerce/class-order-data.php';
-        require_once KWO_PLUGIN_PATH . 'includes/WooCommerce/class-hooks.php';
+    private function init_hooks()
+    {
+        add_action(
+            'admin_menu',
+            array( $this, 'admin_menu' )
+        );
+    }
 
-        // WhatsApp
-        require_once KWO_PLUGIN_PATH . 'includes/WhatsApp/class-message-builder.php';
+    private function load_dependencies()
+    {
+        KWO_Loader::load();
+    }
 
-        // Inicializar componentes
+    private function init()
+    {
         new Keyss_WhatsApp_Settings();
+
         $this->admin = new Keyss_WhatsApp_Admin();
+
         new KWO_WooCommerce_Hooks();
 
-        add_action( 'admin_menu', array( $this, 'admin_menu' ) );
+        new KWO_Ajax_Preview();
     }
 
     public function admin_menu() {
@@ -59,6 +68,18 @@ class Keyss_WhatsApp_Plugin {
     public function settings_page()
     {
         $this->admin->render_settings_page();
+    }
+
+    public static function activate() {
+
+    flush_rewrite_rules();
+
+    }
+
+    public static function deactivate() {
+
+        flush_rewrite_rules();
+
     }
 
 }
